@@ -1,0 +1,35 @@
+
+<div class="main-display">
+
+    <div class="header">
+        <h1>Search Movies</h1>
+    </div>
+
+    <div class="search-box">
+        <input [(ngModel)]="search_query" type="text" class="text-line">
+        <button (click) = "searchMovies()">Search</button>
+    </div>
+
+    <div class="movies">
+        <div *ngFor="let movie of search_movie">
+
+            <div class="rating-box">
+                <p class="movie-desc-rating">{{movie.vote}}</p>
+            </div>
+
+            <div class="container">
+                <img src={{movie.poster}} alt="" class="movie-poster image">
+                <div class="overlay">
+                  <p class="text">{{movie.overview}}</p>
+                </div>
+              </div>
+
+            <p class="movie-desc-date">Release Date: {{movie.date}}</p>
+            <h3 class="movie-title">{{movie.title}}</h3>
+
+            <button (click)="addList(movie)" class="add-list">+ Watchlist</button><br>
+            <button (click)="handleTrailer(movie.id)" class="add-list">Trailer</button>
+        </div>
+    </div>
+<div>
+

@@ -1,0 +1,103 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+body{
+    background-color: #24323f;
+}
+
+
+.main-display{
+    max-width: 90%;
+    margin: 60px auto;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+.header h1{
+    color: white;
+    font-weight: 700;
+    font-size: 28px;
+}
+
+.movies{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 1rem;
+    margin-top: 25px
+}
+.movie-poster{
+    height: 300px;
+    border-radius: 5px;
+}
+.movie-title{
+    margin-top: 5px;
+    font-size: 15px;
+    font-weight: 400;
+    color: white;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+.movie-desc-date{
+    margin-top: 15px;
+    color: gray;
+    font-size: 12px;
+    font-weight: 300;
+}
+.rating-box{
+    position: relative;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    align-items: center; 
+    justify-content: center;
+    top: 40px;
+    left: 160px;
+    color: black;
+    background-color: #21e18c;
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 400;
+    z-index: 100;
+}
+
+
+.container {
+    position: relative;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 99%;
+    width: 99%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #000c;
+    border-radius: 5px;
+  }
+  
+  .container:hover .overlay {
+    opacity: 1;
+  }
+  
+  .text {
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }

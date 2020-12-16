@@ -1,0 +1,33 @@
+
+
+.main-navigation{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a2634;
+    padding: 35px;
+}
+.main-navigation h1{
+    color: white;
+    font-family: 'Fredoka One', cursive;
+    font-size: 28px;
+}
+.main-navigation .green{
+    color: #21e18c;
+}
+.search{
+    display: flex;
+    align-items: center;
+}
+
+
+.main-navigation a{
+    color: white;
+    font-family: 'Kumbh Sans', sans-serif;
+    margin-left: 35px;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+}
+.main-navigation a:hover{
+    color: #21e18c;
+}

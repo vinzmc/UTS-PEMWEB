@@ -1,0 +1,21 @@
+
+
+
+<div class="main-display">
+
+    <div class="header">
+      <h1>My Watchlist</h1>
+    </div>
+  
+    <div class="movies">
+
+        <div *ngFor = "let movie of filteredArr">
+            <img src={{movie.poster}} alt="" class="movie-poster">
+            <h3 class="movie-title">{{movie.title}}</h3>
+            <button (click)="handleTrailer(movie.id)" class="add-list">Trailer</button>
+        </div>
+
+    </div>
+  
+  
+  </div>

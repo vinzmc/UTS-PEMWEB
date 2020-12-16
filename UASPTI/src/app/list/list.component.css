@@ -1,0 +1,13 @@
+.add-list{
+    margin-top: 15px;
+    background-color: #21e18c;
+    padding: 10px 20px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 25px;
+    font-family: 'Kumbh Sans', sans-serif;
+    color: #1a2634;
+    font-size: 14px;
+    transition: all .3s ease-in-out;
+}
