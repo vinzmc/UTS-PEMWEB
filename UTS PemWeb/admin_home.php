@@ -65,7 +65,7 @@ if ($_SESSION['login'] != "admin") {
                             <button type="button" class="btn btn-primary updateMenu" data-toggle="modal" data-target="#Tambah" name="update" data-id="<?= $data['ProductsId']; ?>">
                                 <i class="fa fa-pencil-square-o"></i><!-- Edit button-->
                             </button>
-                            <button type="button" class="btn btn-outline-danger hapusMenu" name="delete" data-toggle="modal" data-id="<?= $data['ProductsId']; ?>" onclick="return confirm('Hapus menu?');">
+                            <button type="button" class="btn btn-outline-danger hapusMenu" name="delete" data-toggle="modal" data-id="<?= $data['ProductsId']; ?>">
                                 <i class="fa fa-minus-circle"></i><!-- delete button -->
                             </button>
                         </small>
@@ -189,21 +189,25 @@ if ($_SESSION['login'] != "admin") {
             });
 
             $('.hapusMenu').on('click', function() {
-                const id = $(this).data('id');
+                if (confirm('Hapus menu?')) {
 
-                $.ajax({
-                    url: 'modul_admin/menuModul.php',
-                    data: {
-                        id: id,
-                        hapus: true
-                    },
-                    method: 'post',
-                    success: function() {
-                        setTimeout(function() { // delay 0.5s
-                            location.reload(); // reload
-                        }, 500);
-                    }
-                });
+
+                    const id = $(this).data('id');
+
+                    $.ajax({
+                        url: 'modul_admin/menuModul.php',
+                        data: {
+                            id: id,
+                            hapus: true
+                        },
+                        method: 'post',
+                        success: function() {
+                            setTimeout(function() { // delay 0.5s
+                                location.reload(); // reload
+                            }, 500);
+                        }
+                    });
+                }
             });
 
         });
