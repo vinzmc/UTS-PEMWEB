@@ -39,11 +39,39 @@ session_start();
         </nav>
     </div>
     <div class="container" style="padding-top: 100px">
+        <form action="" method="POST" style="margin-bottom: 20px;">
+            <select class="form-select" aria-label="Default select example" name="Kategori">
+                <option value="All">Show all</option>
+                <option value="Appetizer">Appetizer</option>
+                <option value="Desert">Desert</option>
+                <option value="Seafood">Seafood</option>
+                <option value="Vegetables">Vegetables</option>
+                <option value="Drinks">Drinks</option>
+            </select>
+            <button type="submit" class="btn btn-primary" name="cari">Sort</button>
+        </form>
         <div class="row">
             <?php
             include "connect.php";
 
-            $record = mysqli_query($db, "SELECT Gambar, Nama, Kategori, ProductsId, Harga, Deskripsi FROM `products` ORDER BY `Kategori`");
+            $sql = '';
+
+            $kategori = ' ';
+            if(isset($_POST['cari'])){
+                $kategori = $_POST['Kategori'];
+                if($kategori == 'All'){
+                    $sql = "SELECT * FROM `products`";
+                }else{
+                    $sql = "SELECT * FROM `products` WHERE Kategori = '$kategori'";
+                }
+            }else{
+                $sql = "SELECT * FROM `products`";
+            }
+
+            
+
+
+            $record = mysqli_query($db, $sql);
             while ($data = mysqli_fetch_array($record)) {
             ?>
                 <div class="col" data-aos="zoom-in">
