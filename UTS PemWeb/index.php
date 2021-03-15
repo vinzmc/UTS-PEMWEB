@@ -10,8 +10,9 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Menu</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -30,6 +31,10 @@ session_start();
                 <?php if (!isset($_SESSION['name'])) : ?>
                     <a href="login.php" class="btn btn-outline-success" type="button" style="margin: 0px 10px 0px 35px;">Login</a>
                 <?php endif; ?>
+
+                <?php if(isset($_SESSION['login'])): ?>
+                    <a href="list_order.php" class="btn btn-outline-success" type="button" style="margin-left: 10px;">Order</a>
+                <?php endif; ?>
             </form>
         </nav>
     </div>
@@ -38,16 +43,17 @@ session_start();
             <?php
             include "connect.php";
 
-            $record = mysqli_query($db, "SELECT Gambar, Nama, Kategori, ProductsId FROM `products` ORDER BY `Kategori`");
+            $record = mysqli_query($db, "SELECT Gambar, Nama, Kategori, ProductsId, Harga, Deskripsi FROM `products` ORDER BY `Kategori`");
             while ($data = mysqli_fetch_array($record)) {
             ?>
-                <div class="col">
+                <div class="col" data-aos="zoom-in">
                     <div class="card text-center" style="width: 18rem;">
                         <img src="<?php echo $data['Gambar']; ?>" alt="" style="height: 250px;" href="#">
                         <div class="card-body">
                             <a class="card-title" href="#"><?php echo $data['Nama']; ?></a>
                             <p class="card-text"><?php echo $data['Kategori']; ?></p>
                             <a href='javascript:void(0)' class="btn btn-primary get_id" data-bs-toggle="modal" data-bs-target="#modal" data-id="<?= $data['ProductsId']; ?>">Deskripsi</a>
+                            <a href='<?= 'order.php?' . 'menu=' . $data['Nama'] . '&harga=' . $data['Harga'] . '&desc=' . $data['Deskripsi'] ?>' class="btn btn-primary order">Order</a>
                         </div>
                     </div>
                     <br></br>
@@ -75,6 +81,7 @@ session_start();
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
         <script>
             $(document).ready(function() {
@@ -95,6 +102,9 @@ session_start();
                 })
 
             })
+        </script>
+        <script>
+            AOS.init();
         </script>
 </body>
 
